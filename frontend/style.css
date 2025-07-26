@@ -1,0 +1,79 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Darker background */
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#eye-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    border-radius: 0; /* remove border radius for fullscreen */
+    box-shadow: none; /* remove shadow if unnecessary */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border: none;
+}
+
+#eye-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: #007aff;
+    border-color: #007aff;
+    transform: translateY(-2px);
+}
+
+.controls button:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+#status-text, #emotion-display {
+    font-size: 1.1em;
+    color: #aaa;
+    min-height: 22px;
+}
+
+#emotion-output {
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+}

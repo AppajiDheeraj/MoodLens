@@ -1,0 +1,30 @@
+# .gitignore
+
+# --- Python ---
+# Virtual Environment folder
+backend/venv/
+
+# Compiled Python files
+backend/__pycache__/
+*.pyc
+
+# --- IDE / Editor ---
+# VS Code specific
+.vscode/
+
+# --- Operating System ---
+# Mac
+.DS_Store
+# Windows
+Thumbs.db
+
+# --- Sensitive Information ---
+# Any file containing secret keys or environment variables
+.env
+*.env
+
+# --- Large Files ---
+# If you download any large model files locally that are not part of the pip install
+# For example:
+# *.pth
+# *.safetensors
