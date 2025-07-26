@@ -16,6 +16,10 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"]
 )
 
+@app.get("/")
+def read_root():
+    return {"status": "Backend is running successfully"}
+
 print("Loading emotion recognition model...")
 emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
 print("Model loaded successfully.")
@@ -82,9 +86,9 @@ async def websocket_endpoint(websocket: WebSocket):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 
-# --- Main entry point to run the server with Uvicorn ---
-if __name__ == "__main__":
-    print("Starting server with Uvicorn...")
-    # The string "main:app" tells Uvicorn to look for the 'app' object in the 'main' module.
-    # reload=True is very helpful for development, as it restarts the server on code changes.
-    uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
+# # --- Main entry point to run the server with Uvicorn ---
+# if __name__ == "__main__":
+#     print("Starting server with Uvicorn...")
+#     # The string "main:app" tells Uvicorn to look for the 'app' object in the 'main' module.
+#     # reload=True is very helpful for development, as it restarts the server on code changes.
+#     uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
