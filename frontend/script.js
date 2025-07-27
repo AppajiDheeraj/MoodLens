@@ -1,6 +1,7 @@
 // --- Configuration ---
 // const BACKEND_URL = "ws://127.0.0.1:5000/ws/audio";
-import.meta.env.VITE_BACKEND_URL;
+// --- Configuration ---
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const TIMESLICE_MS = 1000;
 
 // --- DOM Elements (Now safely checked) ---
