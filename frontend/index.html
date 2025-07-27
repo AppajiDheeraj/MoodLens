@@ -3,48 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>MoodLens</title>
-    <meta name="description" content="MoodLens – Interactive eyes that react to your voice and messages.">
+
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="MoodLens – Experience emotion-driven interactive eyes that react to your voice and mood in real time.">
+
+    <!-- Favicon for Browser Tab -->
     <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+
+    <!-- Mobile & Fullscreen Optimization -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MoodLens">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
     <!-- OpusMediaRecorder scripts -->
     <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
 </head>
 <body>
-    <div id="main-container">
-        <!-- Eyes Section -->
-        <div id="eye-container">
-            <canvas id="eye-canvas"></canvas>
-        </div>
-
-        <!-- Chat Section -->
-        <div id="chat-window" class="hidden">
-            <div id="chat-header">
-                <span>Talk to the Eyes</span>
-                <button id="close-chat-btn">&times;</button>
-            </div>
-            <div id="chat-messages"></div>
-            <div id="chat-input-container">
-                <input type="text" id="chat-input" placeholder="Type a message...">
-                <button id="send-btn" aria-label="Send message">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Chat Icon -->
-    <div id="chat-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="25px" height="25px">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
-        </svg>
+    <div id="eye-container">
+        <canvas id="eye-canvas"></canvas>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
