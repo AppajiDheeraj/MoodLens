@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title>MoodLens</title>
 
-    <!-- Mobile & Fullscreen Meta -->
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="MoodLens – Experience emotion-driven interactive eyes that react to your voice and mood in real time.">
+
+    <!-- Favicon for Browser Tab -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icon.png">
+
+    <!-- Mobile & Fullscreen Optimization -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MoodLens">
 
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 
     <!-- OpusMediaRecorder scripts -->
@@ -20,22 +28,6 @@
     <div id="eye-container">
         <canvas id="eye-canvas"></canvas>
     </div>
-
-    <!-- Force fullscreen on user interaction -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            function goFullscreen() {
-                const el = document.documentElement;
-                if (el.requestFullscreen) {
-                    el.requestFullscreen();
-                } else if (el.webkitRequestFullscreen) {
-                    el.webkitRequestFullscreen();
-                }
-            }
-            // First tap or click will trigger fullscreen
-            document.body.addEventListener("click", goFullscreen, { once: true });
-        });
-    </script>
 
     <script src="script.js"></script>
 </body>
