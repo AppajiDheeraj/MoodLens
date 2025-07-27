@@ -9,6 +9,9 @@ import speech_recognition as sr
 from transformers import pipeline
 import soundfile as sf
 import numpy as np
+import subprocess
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 # --- Initialize App & Model ---
 app = FastAPI()
@@ -53,15 +56,18 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 try:
                     # Convert the raw bytes to a numpy array
-                    audio_np = np.frombuffer(processing_buffer, dtype=np.int16)
 
-                    # Convert to WAV in memory for SpeechRecognition
-                    wav_io = io.BytesIO()
-                    sf.write(wav_io, audio_np, SAMPLE_RATE, format='WAV')
-                    wav_io.seek(0)
+                    # Save the compressed audio to a file
+                    with open("temp.opus", "wb") as f:
+                        f.write(processing_buffer)
 
-                    # Transcribe
-                    with sr.AudioFile(wav_io) as source:
+                    # Decode using ffmpeg to WAV
+                    subprocess.run([
+                        "ffmpeg", "-y", "-i", "temp.opus", "-ar", "48000", "-ac", "1", "temp.wav"
+                    ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+                    # Use SpeechRecognition to transcribe the WAV
+                    with sr.AudioFile("temp.wav") as source:
                         audio_data = recognizer.record(source)
                     
                     text = recognizer.recognize_google(audio_data)
@@ -85,10 +91,3 @@ async def websocket_endpoint(websocket: WebSocket):
         print("WebSocket connection closed.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
-
-# # --- Main entry point to run the server with Uvicorn ---
-# if __name__ == "__main__":
-#     print("Starting server with Uvicorn...")
-#     # The string "main:app" tells Uvicorn to look for the 'app' object in the 'main' module.
-#     # reload=True is very helpful for development, as it restarts the server on code changes.
-#     uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)

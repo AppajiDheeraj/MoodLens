@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Advanced Emotion Eyes</title>
+    <title>MoodLens</title>
+
+    <!-- Mobile & Fullscreen Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="stylesheet" href="style.css">
-    <!-- OpusMediaRecorder scripts are still needed -->
+
+    <!-- OpusMediaRecorder scripts -->
     <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
 </head>
@@ -13,13 +21,21 @@
         <canvas id="eye-canvas"></canvas>
     </div>
 
-    <!-- <div class="controls">
-        <button id="start-button">Start Listening</button>
-        <button id="stop-button" disabled>Stop Listening</button>
-    </div>
-
-    <div id="status-text">Press Start to begin.</div>
-    <div id="emotion-display">Emotion: <span id="emotion-output">...</span></div> -->
+    <!-- Force fullscreen on user interaction -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            function goFullscreen() {
+                const el = document.documentElement;
+                if (el.requestFullscreen) {
+                    el.requestFullscreen();
+                } else if (el.webkitRequestFullscreen) {
+                    el.webkitRequestFullscreen();
+                }
+            }
+            // First tap or click will trigger fullscreen
+            document.body.addEventListener("click", goFullscreen, { once: true });
+        });
+    </script>
 
     <script src="script.js"></script>
 </body>
